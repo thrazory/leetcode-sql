@@ -18,3 +18,8 @@ SELECT
 FROM Person p
 LEFT JOIN Address a
     ON p.personId = a.personId;
+
+## Explanation
+## LEFT JOIN: Ensures that all rows from the left table (Person) are included in the result, even if there is no matching record in the right table (Address). If no match is found, SQL fills those columns with NULL.
+
+## Table Aliases (p and a): Used to simplify the query and explicitly indicate which table each column belongs to.
