@@ -1,17 +1,15 @@
-175. Combine Two Tables
+# 175. Combine Two Tables
 
-Problem Description
+## Problem Description
+Write a solution to report the first name, last name, city, and state of each person in the `Person` table. If the address of a `personId` is not present in the `Address` table, report `null` instead.
 
-Write a solution to report the first name, last name, city, and state of each person in the Person table. If the address of a personId is not present in the Address table, report null instead.
+## Tables Schema
+- **Person:** `personId` (int, primary key), `lastName` (varchar), `firstName` (varchar)
+- **Address:** `addressId` (int, primary key), `personId` (int), `city` (varchar), `state` (varchar)
 
-Tables Schema
+## SQL Solution
 
-Person: personId (int, primary key), lastName (varchar), firstName (varchar)
-
-Address: addressId (int, primary key), personId (int), city (varchar), state (varchar)
-
-SQL Solution
-
+```sql
 SELECT 
     p.firstName,
     p.lastName,
@@ -20,10 +18,3 @@ SELECT
 FROM Person p
 LEFT JOIN Address a
     ON p.personId = a.personId;
-
-
-Explanation
-
-LEFT JOIN: Ensures that all rows from the left table (Person) are included in the result, even if there is no matching record in the right table (Address). If a person doesn't have a matching address, the database will return NULL for the city and state columns.
-
-Table Aliases (p and a): Used to make the query cleaner and easier to read, clearly indicating which table each column originates from.
